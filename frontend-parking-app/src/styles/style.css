@@ -1,0 +1,42 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    background-color: #f0f0f0;
+  }
+  .form-box {
+    width: 400px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  .form-box h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+  }
+  .input-group {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 20px;
+  }
+  .input-group label {
+      margin-bottom: 5px;
+      font-size: 18px;
+      font-weight: bold;
+      text-align: left;
+  }
+  .input-group input {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+  }
+  .btn-group {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 1 rem;
+  }
