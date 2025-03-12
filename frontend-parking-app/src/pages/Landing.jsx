@@ -1,13 +1,14 @@
 import './Landing.css';
-//import './Login.jsx'; onClick={() => <Login/>}
-//import './Register.jsx'; onClick={() => <Register/>}
+import { useNavigate } from 'react-router';
+
 
 export const Landing = () => {
+    const navigate = useNavigate();
     return (
         <div className="landing-page">
             <h1>PARKING MOBILE APP</h1>
-            <button id="login-btn">LOG IN</button>
-            <button id="register-btn">REGISTER</button>   
+            <button className="login-btn" onClick={() => navigate("/login")}>LOG IN</button>
+            <button className="register-btn" onClick={() => navigate("/register")}>REGISTER</button>   
         </div>   
     )
 }

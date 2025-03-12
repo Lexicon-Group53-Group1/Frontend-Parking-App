@@ -15,24 +15,24 @@ h1 {
     margin-top: 50px;
     margin-bottom: 50px;
 }
-#login-btn {
+.login-btn {
     background: rgb(255, 208, 0);
     margin: 20px;
     border-radius: 30px;
     box-shadow: 0px 0px 5px gray;
     border: none;
 }
-#login-btn:hover {
+.login-btn:hover {
     background: rgb(255, 218, 117);
 }
-#register-btn {
+.register-btn {
     background: rgb(16, 113, 183);
     margin: 20px;
     border-radius: 30px;
     box-shadow: 0px 0px 5px gray;
     border: none;
 }
-#register-btn:hover {
+.register-btn:hover {
     background: rgba(20, 161, 255, 0.938);
    
 }
