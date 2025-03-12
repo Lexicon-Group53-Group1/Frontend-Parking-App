@@ -1,38 +1,41 @@
 .page-main{
-    width: 100vw;
+    width: 95vw;
+    height: 75vh;
     padding: 50px 0 0 0;
     background-color: #aFF;
     display: grid;
-    grid-row: auto;
-}
-
-.session-list-box{
-    width: 50vw;
-    height: 50vh;
-    padding: 20px;
-    margin: 0 40px 0 20px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-    text-align: center;
-}
-
-.session-toggle-box{
-    width: 30vw;
-    height: 50vh;
-    padding: 20px;
-    margin: 0 20px 0 40px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-    text-align: center;
+    grid-template-columns: auto auto auto auto auto;
+    grid-template-rows: auto auto auto auto auto auto auto auto auto auto;
+    gap: 25px 50px;
+    padding: 25px;
 }
 
 .session-logout{
-    width: 100px;
-    height: 50px;
-    margin: 0 20px 0 20px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    background-color: goldenrod;
+    grid-row-start: 1;
+    grid-row-end: 1;
+    grid-column-start: 6;
+    grid-column-end: 6;
+
+    border-radius: 25px;
+}
+
+.session-list-box{
+    background-color: rgb(157, 206, 255);
+    grid-row-start: 2;
+    grid-row-end: 11;
+    grid-column-start: 1;
+    grid-column-end: 6;
+
+    border-radius: 25px;
+}
+
+.session-toggle-box{
+    background-color: dodgerblue;
+    grid-row-start: 2;
+    grid-row-end: 11;
+    grid-column-start: 6;
+    grid-column-end: 6;
+
+    border-radius: 25px;
 }

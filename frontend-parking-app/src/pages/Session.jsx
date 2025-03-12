@@ -1,25 +1,22 @@
 import {useForm} from 'react-hook-form';
 import "../styles/sessionStyle.css";
+import { useNavigate } from 'react-router';
 
 export const Session = () => {
-    const{Session, handleSubmit} =useForm();
-    const onSubmit = (data) => { console.log(data);}
+    const navigate = useNavigate();
     return (
         <div className="page-main">
-
             <div className="session-logout">
-                <h2>logout</h2>
+                 <button onClick={() => navigate("/")}>Logout</button>
             </div>
 
-            <div>
-                <div className="session-list-box">
+            <div className="session-list-box">
                     <h2>session-list-box</h2>
                 </div>
 
                 <div className="session-toggle-box">
                     <h2>session-toggle-box</h2>
                 </div>
-            </div>
         </div>
     );
 }
