@@ -1,9 +1,10 @@
 import {useForm} from 'react-hook-form';
 import "../styles/style.css";
-import { Navigate, useNavigate } from 'react-router';
+import {useNavigate } from 'react-router';
 import axios from 'axios';
 
 export const Register = () => {
+    const navigate = useNavigate();
     const{register, handleSubmit} =useForm();
     const onSubmit = async(data) => {
         try{
@@ -16,11 +17,11 @@ export const Register = () => {
             carPlateNumber: data.licenseplate,
             
         });
-        alert(response.data.Message);
-        Navigate('/login');
+        alert(response.data.message);
+        navigate('/login');
         }
         catch(error){
-            alert(error.response?.data?.Message||"Registration failed");
+            alert(error.response?.data?.message||"Registration failed");
         }
     }
     return (

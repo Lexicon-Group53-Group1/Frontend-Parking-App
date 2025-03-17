@@ -1,9 +1,18 @@
 import {useForm} from 'react-hook-form';
 import "../styles/sessionStyle.css";
 import { useNavigate } from 'react-router';
+import { useEffect,useState } from 'react';
+import { PreviousSession } from '../components/PreviousSession';
+import axios from 'axios';
 
 export const Session = () => {
     const navigate = useNavigate();
+    const[preSession, setPreSession] = useState([]);
+    const userId="Mary Dally_1";
+    useEffect(() => {
+        axios.get(`https://localhost:7229/get-previous-sessions/${userId}`)
+        .then(response => {setPreSession(response.data.previousSession);})
+    },[]);
     return (
         <div className="page-main">
             <div className="session-logout">
@@ -13,6 +22,7 @@ export const Session = () => {
             <div className="session-list-box">
                     <h2>Previous Sessions</h2>
                     <div className="session-list-boxlist">
+                        {preSession.length>0? <PreviousSession data={preSession}/>:<div>No previous session</div>}
                         <div>2025-01-01 to 2025-02-02 <br></br> Cost: 500kr</div>
                         <div>2025-03-03 to 2025-04-04 <br></br> Cost: 500kr</div>
                         <div>2025-05-05 to 2025-06-06 <br></br> Cost: 500kr</div>
