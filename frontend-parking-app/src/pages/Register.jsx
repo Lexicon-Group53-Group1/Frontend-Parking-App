@@ -2,21 +2,22 @@ import {useForm} from 'react-hook-form';
 import "../styles/style.css";
 import {useNavigate } from 'react-router';
 import axios from 'axios';
+import { API_BASE_URL } from "../config";
 
 export const Register = () => {
     const navigate = useNavigate();
     const{register, handleSubmit} =useForm();
     const onSubmit = async(data) => {
-        try{
-        const response = await axios.post('https://localhost:7229/register-user', {
-            userId: "String",
-            userName: data.email,
-            firstName: data.firstName,
-            lastName: data.lastName,
+        try {
+        const response = await axios.post(`${API_BASE_URL}/register-user`, {
+            //userId: "String",
+            username: data.email, //userName: data.email,
+            firstname: data.firstname, //firstName: data.firstName,
+            lastname: data.lastname, //lastName: data.lastName,
             password: data.password,
-            carPlateNumber: data.licenseplate,
-            
+            licenseplate: data.licenseplate, //carPlateNumber: data.licenseplate,    
         });
+
         alert(response.data.message);
         navigate('/login');
         }
@@ -35,11 +36,11 @@ export const Register = () => {
                 </div>
                 <div className="input-group">
                     <label>First name:</label>
-                    <input type="text" placeholder="Enter First Name" {...register('firstName')} required/>
+                    <input type="text" placeholder="Enter First Name" {...register('firstname')} required/>
                 </div>
                 <div className="input-group">
                     <label>Last name:</label>
-                    <input type="text" placeholder="Enter Last Name" {...register('lastName')} required/>
+                    <input type="text" placeholder="Enter Last Name" {...register('lastname')} required/>
                 </div>
                 <div className="input-group">
                     <label>Licenseplate:</label>

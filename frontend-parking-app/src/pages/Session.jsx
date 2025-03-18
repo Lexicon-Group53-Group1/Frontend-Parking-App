@@ -3,13 +3,14 @@ import { useNavigate } from 'react-router';
 import { useEffect,useState } from 'react';
 import { PreviousSession } from '../components/PreviousSession';
 import axios from 'axios';
+import { API_BASE_URL } from "../config";
 
 export const Session = () => {
     const navigate = useNavigate();
     const[preSession, setPreSession] = useState([]);
     const userId="Mary Dally_1";
     useEffect(() => {
-        axios.get(`https://localhost:7229/get-previous-sessions/${userId}`)
+        axios.get(`${API_BASE_URL}/previous-sessions/{id}`)
         .then(response => {setPreSession(response.data.previousSession);})
     },[]);
     const [sessionData, setSessionData] = useState({
@@ -24,7 +25,7 @@ export const Session = () => {
 
     const getAccountDetails = async () => {
         try {
-            const response = await axios.post('http://localhost:7123/accountdetails', {
+            const response = await axios.get(`${API_BASE_URL}/user-details`, {
                 userId: sessionData.userID,
             });
             
@@ -41,7 +42,7 @@ export const Session = () => {
 
     const startSession = async () => {
         try {
-            const response = await axios.post('http://localhost:7123/start', {
+            const response = await axios.post(`${API_BASE_URL}/start`, {
                 userId: sessionData.userID,
                 startTime: new Date().toISOString()
             });
@@ -67,6 +68,7 @@ export const Session = () => {
                     <h2>Previous Sessions</h2>
                     <div className="session-list-boxlist">
                         {preSession.length>0? <PreviousSession data={preSession}/>:<div>No previous session</div>}
+                        
                         <div>2025-01-01 to 2025-02-02 <br></br> Cost: 500kr</div>
                         <div>2025-03-03 to 2025-04-04 <br></br> Cost: 500kr</div>
                         <div>2025-05-05 to 2025-06-06 <br></br> Cost: 500kr</div>
@@ -76,7 +78,8 @@ export const Session = () => {
                         <div>2025-13-13 to 2025-14-14 <br></br> Cost: 500kr</div>
                         <div>2025-15-15 to 2025-16-16 <br></br> Cost: 500kr</div>
                         <div>2025-17-17 to 2025-18-18 <br></br> Cost: 500kr</div>
-                        <div>2025-19-19 to 2025-20-20 <br></br> Cost: 500kr</div>
+                        <div>2025-19-19 to 2025-20-20 <br></br> Cost: 500kr</div> 
+                        
                     </div>
                 </div>
 
