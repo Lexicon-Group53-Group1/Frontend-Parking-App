@@ -1,6 +1,7 @@
 import "../styles/sessionStyle.css";
 import { useNavigate } from 'react-router';
 import { useState, useEffect } from 'react';
+import { API_BASE_URL } from "../config.js"
 import axios from 'axios';
 
 export const Session = () => {
@@ -15,14 +16,14 @@ export const Session = () => {
         isActive: false
     });
 
-    const getAccountDetails = async () => {
+    const getUserDetails = async () => {
         try {
-            const response = await axios.post('http://localhost:7123/accountdetails', {
+            const response = await axios.post('${API_BASE_URL}/user-details', {
                 userId: sessionData.userID,
             });
             
             setSessionData({
-                fullName: response.data.Firstname + ' ' + response.data.Lastname,
+                fullName: response.data.Fullname,
                 licensePlate: response.data.Licenseplate,
                 totalBalance: response.data.Balance,
             });
@@ -34,19 +35,33 @@ export const Session = () => {
 
     const startSession = async () => {
         try {
-            const response = await axios.post('http://localhost:7123/start', {
+            const response = await axios.post('${API_BASE_URL}/start-session', {
                 userId: sessionData.userID,
-                startTime: new Date().toISOString()
             });
 
             setSessionData({
+                message: response.data.message,
                 startTime: response.data.startTime,
-                cost: response.data.cost,
                 isActive: true
             });
 
         } catch (error) {
             console.error('Error starting session:', error);
+        }
+    };
+    const stopSession = async () => {
+        try {
+            const response = await axios.post('${API_BASE_URL}/end-session', {
+                userId: sessionData.userID,
+            });
+
+            setSessionData({
+                message: response.data.message,
+                startTime: response.data.startTime,
+            });
+
+        } catch (error) {
+            console.error('Error stopping session:', error);
         }
     };
 
@@ -84,8 +99,11 @@ export const Session = () => {
                         <button className="start-session-button" onClick={startSession} disabled={sessionData.isActive}>
                             {sessionData.isActive ? 'Session Active' : 'Start Session'}
                         </button>
-                        <button className="start-session-button" onClick={getAccountDetails}>
-                            Temp get account details
+                        <button className="start-session-button" onClick={getUserDetails}>
+                            Temp get user details
+                        </button>
+                        <button className="start-session-button" onClick={stopSession} disabled={!sessionData.isActive}>
+                        {sessionData.isActive ? 'Session Active' : 'Stop Session'}
                         </button>
                     </div>
                 </div>
