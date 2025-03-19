@@ -1,4 +1,4 @@
-.landing-page { 
+.landing-page {
     max-width: 1280px;
     text-align: center;
     background-image: url('/src/assets/background.jpg');
@@ -15,6 +15,7 @@ h1 {
     margin-top: 50px;
     margin-bottom: 50px;
 }
+
 .login-btn {
     background: rgb(225, 180, 102);
     margin: 20px;
@@ -23,9 +24,11 @@ h1 {
     border: none;
     width: 120px;
 }
+
 .login-btn:hover {
-    background:#ffd66e;
+    background: #ffd66e;
 }
+
 .register-btn {
     background: rgb(16, 113, 183);
     margin: 20px;
@@ -34,7 +37,8 @@ h1 {
     border: none;
     width: 120px;
 }
+
 .register-btn:hover {
     background: rgba(20, 161, 255, 0.938);
-   
+
 }

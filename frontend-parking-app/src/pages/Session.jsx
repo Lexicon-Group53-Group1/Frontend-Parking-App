@@ -1,11 +1,18 @@
 import "../styles/sessionStyle.css";
 import { useNavigate } from 'react-router';
-import { useState, useEffect } from 'react';
-import { API_BASE_URL } from "../config.js"
+import { useEffect,useState } from 'react';
+import { PreviousSession } from '../components/PreviousSession';
 import axios from 'axios';
+import { API_BASE_URL } from "../config";
 
 export const Session = () => {
     const navigate = useNavigate();
+    const[preSession, setPreSession] = useState([]);
+    const userId="Mary Dally_1";
+    useEffect(() => {
+        axios.get(`${API_BASE_URL}/previous-sessions/{id}`)
+        .then(response => {setPreSession(response.data.previousSession);})
+    },[]);
     const [sessionData, setSessionData] = useState({
         userID: 1,
         fullName: null,
@@ -18,7 +25,7 @@ export const Session = () => {
 
     const getUserDetails = async () => {
         try {
-            const response = await axios.post('${API_BASE_URL}/user-details', {
+            const response = await axios.get(`${API_BASE_URL}/user-details`, {
                 userId: sessionData.userID,
             });
             
@@ -35,7 +42,7 @@ export const Session = () => {
 
     const startSession = async () => {
         try {
-            const response = await axios.post('${API_BASE_URL}/start-session', {
+            const response = await axios.post(`${API_BASE_URL}/start`, {
                 userId: sessionData.userID,
             });
 
@@ -49,21 +56,6 @@ export const Session = () => {
             console.error('Error starting session:', error);
         }
     };
-    const stopSession = async () => {
-        try {
-            const response = await axios.post('${API_BASE_URL}/end-session', {
-                userId: sessionData.userID,
-            });
-
-            setSessionData({
-                message: response.data.message,
-                startTime: response.data.startTime,
-            });
-
-        } catch (error) {
-            console.error('Error stopping session:', error);
-        }
-    };
 
     return (
         <div className="page-main">
@@ -74,6 +66,8 @@ export const Session = () => {
             <div className="session-list-box">
                     <h2>Previous Sessions</h2>
                     <div className="session-list-boxlist">
+                        {preSession.length>0? <PreviousSession data={preSession}/>:<div>No previous session</div>}
+                        
                         <div>2025-01-01 to 2025-02-02 <br></br> Cost: 500kr</div>
                         <div>2025-03-03 to 2025-04-04 <br></br> Cost: 500kr</div>
                         <div>2025-05-05 to 2025-06-06 <br></br> Cost: 500kr</div>
@@ -83,7 +77,8 @@ export const Session = () => {
                         <div>2025-13-13 to 2025-14-14 <br></br> Cost: 500kr</div>
                         <div>2025-15-15 to 2025-16-16 <br></br> Cost: 500kr</div>
                         <div>2025-17-17 to 2025-18-18 <br></br> Cost: 500kr</div>
-                        <div>2025-19-19 to 2025-20-20 <br></br> Cost: 500kr</div>
+                        <div>2025-19-19 to 2025-20-20 <br></br> Cost: 500kr</div> 
+                        
                     </div>
                 </div>
 
