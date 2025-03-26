@@ -45,22 +45,31 @@
 }
 .session-list-boxlist {
     display: grid;
-    grid-template-columns: auto auto;
-    gap: 50px 0px;
+    grid-template-columns: auto auto auto;
+    gap: 20px 0px;
 }
 .session-list-boxlist div {
     background-color: whitesmoke;
     margin: auto;
     width: 400px;
-    height: 50px;
+    height: 75px;
     border-radius: 25px;
 }
 
 
 
+.session-user-details{
+    background-color: lightslategray;
+    grid-row-start: 2;
+    grid-row-end: 4;
+    grid-column-start: 6;
+    grid-column-end: 6;
+
+    border-radius: 25px;
+}
 .session-toggle-box{
     background-color: dodgerblue;
-    grid-row-start: 2;
+    grid-row-start: 4;
     grid-row-end: 11;
     grid-column-start: 6;
     grid-column-end: 6;
@@ -88,4 +97,18 @@
     border-radius: 25px;
     color: white;
     background-color: rgb(32, 32, 255);
+}
+.start-session-button:hover {
+    background: rgb(50, 50, 255);
+}
+.end-session-button{
+    margin: auto;
+    width: 400px;
+    height: 50px;
+    border-radius: 25px;
+    color: white;
+    background-color: rgb(248, 170, 53);
+}
+.end-session-button:hover {
+    background: rgb(255, 188, 87);
 }

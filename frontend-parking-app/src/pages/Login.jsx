@@ -24,8 +24,8 @@ export const Login = () =>
         if (response.ok)
         {
             const data = await response.json();
-            localStorage.setItem("user", JSON.stringify(data.user));
-            alert("Successful login!")
+            sessionStorage.setItem("user", JSON.stringify(data.user));
+            //alert("Successful login!")
             navigate("/session");
         } else
         {
