@@ -31,28 +31,28 @@ export const Register = () => {
                 <h2>Register</h2>
                 <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="input-group">
-                    <label>User name:</label>
-                    <input type="email" placeholder="Enter your Email" {...register('email')} required/>
+                    <label>Username:</label>
+                    <input type="email" placeholder="Enter your email-address" {...register('email')} required/>
                 </div>
                 <div className="input-group">
                     <label>First name:</label>
-                    <input type="text" placeholder="Enter First Name" {...register('firstname')} required/>
+                    <input type="text" placeholder="Enter your first name" {...register('firstname')} required/>
                 </div>
                 <div className="input-group">
                     <label>Last name:</label>
-                    <input type="text" placeholder="Enter Last Name" {...register('lastname')} required/>
+                    <input type="text" placeholder="Enter your last name" {...register('lastname')} required/>
                 </div>
                 <div className="input-group">
                     <label>Licenseplate:</label>
-                    <input type="text" placeholder="Enter Licenseplate" {...register('licenseplate')} required/>
+                    <input type="text" placeholder="Enter your licenseplate" {...register('licenseplate')} required/>
                 </div>
                 <div className="input-group">
                     <label>Password:</label>
-                    <input type="password" placeholder="Enter Password" {...register('password')} required/>
+                    <input type="password" placeholder="Enter password" {...register('password')} required/>
                 </div>
                 <div className="input-group">
                     <label>Confirm Password:</label>
-                    <input type="password" placeholder="Confirm Password" {...register('confirmPassword')} required/>
+                    <input type="password" placeholder="Confirm password" {...register('confirmPassword')} required/>
                 </div>
                 <div className="btn-group">
                     <button type="submit">Register</button>
@@ -62,8 +62,8 @@ export const Register = () => {
             <div className="info-box">
                 <h3>New user</h3>
                 <p>Register to use the parking app.</p>
-                <p>Your e-mail address is your user name when you log in.</p>
-                <p>Already have an account? <a href="/login">Log in</a></p>
+                <p>Your e-mail address will be your user name when you log in.</p>
+                <p>Already have an account? <a href="/login" className="login-text">Log in</a></p>
 
             </div>
         </div>

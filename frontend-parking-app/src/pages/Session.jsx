@@ -174,6 +174,9 @@ export const Session = () => {
     // HTML
     return (
         <div className="page-main">
+            <div>
+                <h2>Group 1 Parking App</h2>
+            </div>
             <div className="session-logout">
                  <button className="logout-button" onClick={logOut}>Logout</button>
             </div>

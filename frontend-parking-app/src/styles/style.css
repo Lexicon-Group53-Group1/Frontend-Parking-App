@@ -1,5 +1,4 @@
 .container {
-    max-width: 1280px;
     text-align: center;
     display: flex;
     justify-content:center;
@@ -14,7 +13,9 @@
     width: 400px;
     padding: 20px;
 
-    background-color: rgb(77, 137, 226, 0.2);
+    /* background-color: rgb(77, 137, 226, 0.2); */
+    background-color: dodgerblue;
+    color: white;
     border-radius: 10px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
     text-align: center;
@@ -22,7 +23,9 @@
   .form-box h2 {
     margin-bottom: 20px;
     font-size: 24px;
-    color: rgb(77, 137, 226);
+    /* color: rgb(77, 137, 226); */
+    color: white;
+    
   }
   .input-group {
       display: flex;
@@ -42,17 +45,30 @@
       font-size: 16px;
   }
   .btn-group {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 1 rem;
+    display: flex;
+  }
+  .btn-group button {
+    color: white;
+    background: rgb(225, 180, 102);
+  }
+  .btn-group button:hover {
+    background: #ffd66e;
   }
   .info-box {
       width: 400px;
       padding: 20px;
       color: white;
-      background-color: rgb(77, 137, 226);
+      /* background-color: rgb(77, 137, 226); */
+      background-color: rgb(72, 163, 255);
       border-radius: 10px;
       box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
       text-align: left;
       margin-left: 80px;
   }
+
+  .login-text {
+    color: blue
+}
+.login-text:hover {
+    color: lightblue
+}
