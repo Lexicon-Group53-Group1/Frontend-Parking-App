@@ -10,7 +10,7 @@ export const Session = () => {
     const [preSession, setPreSession] = useState([]);
     const currentUser = JSON.parse(sessionStorage.getItem("user"))
     
-    console.log("Raw currentUser from sessionStorage:", currentUser);
+    //DEBUG console.log("Raw currentUser from sessionStorage:", currentUser);
 
     const [sessionData, setSessionData] = useState({
         userID: 0,
@@ -24,11 +24,11 @@ export const Session = () => {
     });
 
     useEffect(() => {
-        console.log("Current User:", currentUser);
-        console.log("Current Session Data:", sessionData);
+        //DEBUG console.log("Current User:", currentUser);
+        //DEBUG console.log("Current Session Data:", sessionData);
 
         if (currentUser != null) {
-            console.log("CurrentUser userid:", currentUser.userID);
+            //DEBUG console.log("CurrentUser userid:", currentUser.userID);
             
             setSessionData(prevState => ({
                 ...prevState,
@@ -52,6 +52,9 @@ export const Session = () => {
         if (sessionData.userID !== 0){
             getSession();
             getPreviousSessions();
+            if (!sessionData.isActive){
+            getBalance();
+            }
         }
     }, [sessionData.userID, sessionData.isActive])
 
@@ -97,8 +100,6 @@ export const Session = () => {
                 cost: 0,
                 isActive: false
             }));
-
-            getBalance();
         } 
         else if (response.conflict)
         {
@@ -114,7 +115,7 @@ export const Session = () => {
     // Get current session
     async function getSession(){
         try {
-            console.log("UserID for getSession:", sessionData.userID)
+            //DEBUG console.log("UserID for getSession:", sessionData.userID)
             
             if (!sessionData.userID) {
                 console.error("UserID is undefined or zero");
@@ -130,7 +131,7 @@ export const Session = () => {
                 isActive: response.data.isActive
             }));
     
-            console.log(response.data.message)
+            //DEBUG console.log(response.data.message)
         } catch (error) {
             console.error('Error getting session:', error);
         }
@@ -146,7 +147,7 @@ export const Session = () => {
                 totalBalance: response.data.totalBalance
             }));
     
-            console.log(response.data.message)
+            //DEBUG console.log(response.data.message)
         } catch (error) {
             console.error('Error getting session:', error);
         }
@@ -157,7 +158,7 @@ export const Session = () => {
         try {
             const response = await axios.get(`${API_BASE_URL}/previous-sessions/${sessionData.userID}`);
             
-            console.log("Previous Sessions Response:", response.data);
+            //DEBUG console.log("Previous Sessions Response:", response.data);
             
             setPreSession(response.data.previousSession);
         } catch (error) {
